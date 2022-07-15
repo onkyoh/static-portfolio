@@ -1,13 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
 * {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   scroll-behavior: smooth;
+  scrollbar-width: 0px;
+}
+
+* ::-webkit-scrollbar {
+  display: none;
 }
 
 body, html {
   width: 100%;
+  background-color: #0f0f0f;
 }
 
 section {
@@ -33,6 +40,13 @@ section {
   padding-top: 2em;
 }
 
+section h2 {
+  text-align: center;
+  color: #e12222;
+  font-size: 2em;
+  font-family: "Special Elite", cursive;
+}
+
 section:first-child {
   padding-top: 0;
 }
@@ -42,7 +56,13 @@ section:last-child {
 }
 
 p {
-  color: #373737;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.1em;
+}
+
+img {
+  color: white;
 }
 
 #burger {
@@ -53,7 +73,7 @@ p {
   background: none;
   line-height: 70%;
   border: none;
-  color: black;
+  color: #e12222;
 }
 
 nav {
@@ -61,7 +81,7 @@ nav {
   top: 0;
   width: 300px;
   height: 100vh;
-  background-color: black;
+  background-color: #e12222;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,7 +105,7 @@ nav button {
   background: none;
   line-height: 70%;
   border: none;
-  color: #373737;
+  color: #0f0f0f;
 }
 
 nav ul {
@@ -108,9 +128,9 @@ nav ul {
 }
 
 nav ul li {
-  border-radius: 15px;
   width: calc(2/3 * 100%);
-  height: 2em;
+  height: 2.5em;
+  padding: 0 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,24 +140,45 @@ nav ul li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: background-color 0.25s ease;
-  transition: background-color 0.25s ease;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-radius: 15px;
+  -webkit-transition: background-color 0.25s;
+  transition: background-color 0.25s;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: white;
+  color: #0f0f0f;
   font-size: 1.3em;
+  font-family: "Special Elite", cursive;
+  height: 2.5em;
+  line-height: 2.75em;
   -webkit-transition: color 0.25s ease;
   transition: color 0.25s ease;
 }
 
+nav ul li a::after {
+  content: "\25CE";
+  position: absolute;
+  right: 3em;
+  opacity: 0;
+  color: #e12222;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
 nav ul li:hover {
-  background-color: white;
+  background-color: #0f0f0f;
 }
 
 nav ul li:hover a {
-  color: black;
+  color: white;
+}
+
+nav ul li:hover a::after {
+  opacity: 1;
 }
 
 .close {
@@ -168,11 +209,13 @@ nav ul li:hover a {
   font-size: 4.5em;
   text-align: center;
   max-width: 90%;
+  color: #e12222;
+  font-family: "Special Elite", cursive;
 }
 
 #landing h2 {
-  text-align: center;
-  color: #373737;
+  color: white;
+  font-size: 1.5em;
 }
 
 #about {
@@ -181,10 +224,6 @@ nav ul li:hover a {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-}
-
-#about h2 {
-  font-size: 2em;
 }
 
 #about > div {
@@ -211,7 +250,13 @@ nav ul li:hover a {
 }
 
 #about > div img {
-  border: 1px solid black;
+  border: 1px solid white;
+}
+
+#about h3 {
+  font-family: "Special Elite", cursive;
+  color: #e12222;
+  font-size: 1.5em;
 }
 
 #about ul {
@@ -239,6 +284,11 @@ nav ul li:hover a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 1em;
+}
+
+#about ul div li {
+  color: white;
 }
 
 #creations {
@@ -254,14 +304,14 @@ nav ul li:hover a {
 
 #creations h4 {
   text-align: center;
-  color: #373737;
-  font-size: 1.1em;
+  color: white;
+  font-size: 1.3em;
   margin-bottom: 3em;
 }
 
 #creations h4 span {
-  text-decoration: underline;
-  color: black;
+  color: #e12222;
+  font-family: "Special Elite", cursive;
 }
 
 #creations ul {
@@ -302,7 +352,9 @@ nav ul li:hover a {
 
 #creations ul li h3 {
   font-size: 1.6em;
+  font-family: "Special Elite", cursive;
   text-align: center;
+  color: #e12222;
 }
 
 #creations ul li .desktop-img-container {
@@ -382,7 +434,7 @@ nav ul li:hover a {
 
 #creations ul li .header-creation-details .creation-details a {
   text-decoration: none;
-  color: black;
+  color: #e12222;
 }
 
 #contact {
@@ -396,6 +448,34 @@ nav ul li:hover a {
 
 button {
   cursor: pointer;
+}
+
+#from-left {
+  -webkit-transform: translate(calc(min(-80vw, 1000px)));
+          transform: translate(calc(min(-80vw, 1000px)));
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+}
+
+.from-left {
+  -webkit-transform: translate(0) !important;
+          transform: translate(0) !important;
+}
+
+#from-right {
+  -webkit-transform: translate(calc(min(80vw, 1000px)));
+          transform: translate(calc(min(80vw, 1000px)));
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+}
+
+.from-right {
+  -webkit-transform: translate(0) !important;
+          transform: translate(0) !important;
 }
 
 @media screen and (min-width: 1000px) {

@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-$background: rgba(255, 255, 255, 1);
-$accent: rgba(0, 0, 0, 1);
-$accent-light: rgb(55, 55, 55);
+$bg: rgb(15, 15, 15);
+$bg-light: rgb(55, 55, 55);
+$accent: rgb(225, 34, 34);
+$accent-light: rgb(255, 255, 255);
+$header-font: 'Special Elite', cursive;
+$body-font: 'Times New Roman', Times, serif;
 
 @mixin flexCenter() {
     display: flex;
@@ -14,10 +18,15 @@ $accent-light: rgb(55, 55, 55);
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    scrollbar-width: 0px;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 body, html {
     width: 100%;
+    background-color: $bg;
 }
 
 section {
@@ -28,6 +37,12 @@ section {
     justify-content: start;
     margin-bottom: 3em;
     padding-top: 2em;
+    h2 {
+        text-align: center;
+        color: $accent;
+        font-size: 2em;
+        font-family: $header-font;
+    }
     &:first-child {
         padding-top: 0;
     }
@@ -37,6 +52,12 @@ section {
 }
 
 p {
+    color: $accent-light;
+    font-family: $body-font;
+    font-size: 1.1em;
+}
+
+img {
     color: $accent-light;
 }
 
@@ -66,7 +87,7 @@ nav {
         background: none;
         line-height: 70%;
         border: none;
-        color: $accent-light;
+        color: $bg;
     }
     ul {
         list-style: none;
@@ -75,21 +96,37 @@ nav {
         @include flexCenter();
         flex-direction: column;
         li {
-            border-radius: 15px;
             width: calc(2/3 * 100%);
-            height: 2em;
+            height: 2.5em;
+            padding: 0 1em;
             @include flexCenter();
-            transition: background-color 0.25s ease;
+            justify-content: flex-start;
+            border-radius: 15px;
+            transition: background-color 0.25s;
             a {
                 text-decoration: none;
-                color: $background;
+                color: $bg;
                 font-size: 1.3em;
+                font-family: $header-font;
+                height: 2.5em;
+                line-height: 2.75em;
                 transition: color 0.25s ease;
+                &::after {
+                    content: "\25CE";
+                    position: absolute;
+                    right: 3em;
+                    opacity: 0;
+                    color: $accent;
+                    transition: opacity 0.25s ease;
+                }
             }
             &:hover {
-                background-color: $background;
+                background-color: $bg;
                 a {
-                    color: $accent;
+                    color: $accent-light;
+                    &::after {
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -109,10 +146,12 @@ nav {
         font-size: 4.5em;
         text-align: center;
         max-width: 90%;
+        color: $accent;
+        font-family: $header-font;
     }
     h2 {
-        text-align: center;
         color: $accent-light;
+        font-size: 1.5em;
     }
 }
 
@@ -120,9 +159,6 @@ nav {
     gap: 2em;
     width: 100%;
     height: fit-content;
-    h2 {
-        font-size: 2em;
-    }
     > div {
         @include flexCenter();
         flex-direction: column;
@@ -133,8 +169,13 @@ nav {
             text-align: center;
         }
         img {
-            border: 1px solid black;
+            border: 1px solid $accent-light;
         }
+    }
+    h3 {
+        font-family: $header-font;
+        color: $accent;
+        font-size: 1.5em;
     }
     ul {
         list-style: none;
@@ -142,6 +183,10 @@ nav {
         flex-wrap: wrap;
         div {
             @include flexCenter();
+            gap: 1em;
+            li {
+                color: $accent-light;
+            }
         }
     }
 }
@@ -155,11 +200,11 @@ nav {
     h4 {
         text-align: center;
         color: $accent-light;
-        font-size: 1.1em;
+        font-size: 1.3em;
         margin-bottom: 3em;
         span {
-            text-decoration: underline;
             color: $accent;
+            font-family: $header-font
         }
     }
     ul {
@@ -174,7 +219,9 @@ nav {
             width: calc(min(90%, 1000px));
             h3 {
                 font-size: 1.6em;
+                font-family: $header-font;
                 text-align: center;
+                color: $accent;
             }
             .desktop-img-container {
                 display: none;
@@ -230,6 +277,22 @@ nav {
 
 button {
     cursor: pointer;
+}
+
+#from-left {
+    transform: translate(calc(min(-80vw, 1000px)));
+    transition: transform 1s ease-in-out;
+}
+.from-left {
+    transform: translate(0) !important;
+}
+
+#from-right {
+    transform: translate(calc(min(80vw, 1000px)));
+    transition: transform 1s ease-in-out;
+}
+.from-right {
+    transform: translate(0) !important;
 }
 
 @media screen and (min-width: 1000px) {
