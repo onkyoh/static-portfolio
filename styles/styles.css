@@ -57,7 +57,7 @@ section:last-child {
 
 p {
   color: white;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Special Elite", cursive;
   font-size: 1.1em;
 }
 
@@ -74,6 +74,11 @@ img {
   line-height: 70%;
   border: none;
   color: #e12222;
+  z-index: 1;
+}
+
+.wrapper {
+  overflow-x: hidden;
 }
 
 nav {
@@ -95,6 +100,7 @@ nav {
   transition: -webkit-transform 0.25s ease;
   transition: transform 0.25s ease;
   transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+  z-index: 1;
 }
 
 nav button {
@@ -272,6 +278,8 @@ nav ul li:hover a::after {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 2em;
+  max-width: 90%;
 }
 
 #about ul div {
@@ -284,11 +292,26 @@ nav ul li:hover a::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 1em;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2em;
 }
 
 #about ul div li {
   color: white;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background-color: #e12222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #creations {
@@ -300,18 +323,21 @@ nav ul li:hover a::after {
 
 #creations h2 {
   font-size: 2em;
+  margin-bottom: 2em;
 }
 
 #creations h4 {
   text-align: center;
   color: white;
-  font-size: 1.3em;
+  font-size: 1em;
   margin-bottom: 3em;
+  font-weight: 100;
+  font-family: "Special Elite", cursive;
 }
 
 #creations h4 span {
   color: #e12222;
-  font-family: "Special Elite", cursive;
+  font-weight: bold;
 }
 
 #creations ul {
@@ -328,7 +354,6 @@ nav ul li:hover a::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 3em;
   width: 100%;
 }
 
@@ -346,8 +371,9 @@ nav ul li:hover a::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 1em;
-  width: calc(min(90%, 1000px));
+  width: calc(min(100%, 1000px));
+  padding: 1.5em 0;
+  background-color: #0f0f0f;
 }
 
 #creations ul li h3 {
@@ -359,13 +385,15 @@ nav ul li:hover a::after {
 
 #creations ul li .desktop-img-container {
   display: none;
-  width: 500px;
-  height: 2em;
+  width: 600px;
   overflow: hidden;
+  -webkit-box-shadow: 0px 0px 8px black;
+          box-shadow: 0px 0px 8px black;
 }
 
 #creations ul li .desktop-img-container img {
   width: 100%;
+  aspect-ratio: 5/3;
 }
 
 #creations ul li .header-creation-details {
@@ -383,17 +411,28 @@ nav ul li:hover a::after {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 1em;
-  width: calc(min(100%, 500px));
+  width: calc(min(90%, 500px));
 }
 
 #creations ul li .header-creation-details .mobile-img-container {
-  width: 90%;
-  height: 2em;
+  width: 95%;
   overflow: hidden;
+  -webkit-box-shadow: 0px 0px 8px black;
+          box-shadow: 0px 0px 8px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #creations ul li .header-creation-details .mobile-img-container img {
   width: 100%;
+  aspect-ratio: 5/3;
 }
 
 #creations ul li .header-creation-details .creation-details {
@@ -410,7 +449,7 @@ nav ul li:hover a::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 #creations ul li .header-creation-details .creation-details p {
@@ -435,6 +474,7 @@ nav ul li:hover a::after {
 #creations ul li .header-creation-details .creation-details a {
   text-decoration: none;
   color: #e12222;
+  font-family: "Special Elite", cursive;
 }
 
 #contact {
@@ -462,6 +502,11 @@ button {
 .from-left {
   -webkit-transform: translate(0) !important;
           transform: translate(0) !important;
+  background-color: white !important;
+}
+
+.from-left p {
+  color: #0f0f0f !important;
 }
 
 #from-right {
@@ -479,6 +524,12 @@ button {
 }
 
 @media screen and (min-width: 1000px) {
+  #creations h4 {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (min-width: 1000px) {
   #about > div {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -486,19 +537,30 @@ button {
             flex-direction: row;
   }
   #creations ul li {
-    width: calc(min(90%, 1200px));
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    gap: 3em;
+    padding: 1.5em 1.5em;
   }
   #creations ul li .mobile-img-container {
-    display: none;
+    display: none !important;
   }
   #creations ul li .desktop-img-container {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   #creations ul :nth-child(1), #creations ul :nth-child(3) {
     -webkit-box-orient: horizontal;

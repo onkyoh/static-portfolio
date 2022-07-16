@@ -5,7 +5,8 @@ $bg-light: rgb(55, 55, 55);
 $accent: rgb(225, 34, 34);
 $accent-light: rgb(255, 255, 255);
 $header-font: 'Special Elite', cursive;
-$body-font: 'Times New Roman', Times, serif;
+$body-font: 'Special Elite', cursive;
+
 
 @mixin flexCenter() {
     display: flex;
@@ -70,7 +71,13 @@ img {
     line-height: 70%;
     border: none;
     color: $accent;
+    z-index: 1;
 }
+
+.wrapper {
+    overflow-x: hidden;
+}
+
 nav {
     position: fixed;
     top: 0;
@@ -79,6 +86,7 @@ nav {
     background-color: $accent;
     @include flexCenter();
     transition: transform 0.25s ease;
+    z-index: 1;
     button {
         position: absolute;
         top: 0.5em;
@@ -181,11 +189,22 @@ nav {
         list-style: none;
         @include flexCenter();
         flex-wrap: wrap;
+        gap: 2em;
+        max-width: 90%;
         div {
             @include flexCenter();
-            gap: 1em;
+            flex-wrap: wrap;
+            gap: 2em;
             li {
                 color: $accent-light;
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                background-color: $accent;
+                @include flexCenter();
+                img {
+
+                }
             }
         }
     }
@@ -196,27 +215,30 @@ nav {
     height: fit-content;
     h2 {
         font-size: 2em;
+        margin-bottom: 2em;
     }
     h4 {
         text-align: center;
         color: $accent-light;
-        font-size: 1.3em;
+        font-size: 1em;
         margin-bottom: 3em;
+        font-weight: 100;
+        font-family: $body-font;
         span {
             color: $accent;
-            font-family: $header-font
+            font-weight: bold;
         }
     }
     ul {
         @include flexCenter();
         flex-direction: column;
-        gap: 3em;
         width: 100%;
         li {
             @include flexCenter();
             flex-direction: column;
-            gap: 1em;
-            width: calc(min(90%, 1000px));
+            width: calc(min(100%, 1000px));
+            padding: 1.5em 0;
+            background-color: $bg;
             h3 {
                 font-size: 1.6em;
                 font-family: $header-font;
@@ -225,30 +247,33 @@ nav {
             }
             .desktop-img-container {
                 display: none;
-                width: 500px;
-                height: 2em;
+                width: 600px;
                 overflow: hidden;
+                box-shadow: 0px 0px 8px black;
                 img {
                     width: 100%;
+                    aspect-ratio: 5/3;
                 }
             }
             .header-creation-details {
                 @include flexCenter();
                 flex-direction: column;
                 gap: 1em;
-                width: calc(min(100%, 500px));
+                width: calc(min(90%, 500px));
                 .mobile-img-container {
-                    width: 90%;
-                    height: 2em;
+                    width: 95%;
                     overflow: hidden;
+                    box-shadow: 0px 0px 8px black;
+                    @include flexCenter();
                     img {
                         width: 100%;
+                        aspect-ratio: 5/3;
                     }
                 }
                 .creation-details {
                     @include flexCenter();
                     flex-direction: column;
-                    gap: 1em;
+                    gap: 1.5em;
                     p {
                         text-align: center;
                     }
@@ -260,6 +285,7 @@ nav {
                     a {
                         text-decoration: none;
                         color: $accent;
+                        font-family: $body-font;
                     }
                 }
             }
@@ -285,6 +311,10 @@ button {
 }
 .from-left {
     transform: translate(0) !important;
+    background-color: $accent-light !important;
+    p {
+        color: $bg !important;
+    }
 }
 
 #from-right {
@@ -296,6 +326,14 @@ button {
 }
 
 @media screen and (min-width: 1000px) {
+    #creations {
+        h4 {
+            font-size: 1.3em;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
     #about {
         > div {
             flex-direction: row;
@@ -304,14 +342,16 @@ button {
     #creations {
         ul {
             li {
-                width: calc(min(90%, 1200px));
-                justify-content: space-around;
+                width: 100%;
+                justify-content: center;
                 flex-direction: row;
+                gap: 3em;
+                padding: 1.5em 1.5em;
                 .mobile-img-container {
-                    display: none;
+                    display: none !important;
                 }
                 .desktop-img-container {
-                    display: block;
+                    @include flexCenter();
                 }
             }
             :nth-child(1), :nth-child(3) {
@@ -320,3 +360,4 @@ button {
         }
     }
 }
+
