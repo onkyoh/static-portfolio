@@ -9,12 +9,16 @@ const handleClose = () => {
 }
 
 const handleObserve = (entries) => {
-entries.forEach(entry => {
+    entries.forEach(entry => {
     const id = entry.target.id
-    switch (id) {
-        case 'from-left': entry.target.classList.toggle('from-left', entry.isIntersecting); break;
-        case 'from-right': entry.target.classList.toggle('from-right', entry.isIntersecting); break;
-        default: return;
+    if (id) {
+        switch (id) {
+            case 'from-left': if (entry.isIntersecting) {entry.target.classList.add('from-left')}; break;
+            case 'from-right':  if (entry.isIntersecting) {entry.target.classList.add('from-right')}; break;
+            default: return;
+        }
+    } else {
+        if (entry.isIntersecting) {entry.target.classList.add('roll-in')};
     }
 })
 }
@@ -27,5 +31,5 @@ slideFromLeft.forEach(element => observer.observe(element))
 const slideFromRight = document.querySelectorAll('#from-right')
 slideFromRight.forEach(element => observer.observe(element))
 
-
-
+const rollIn = document.querySelectorAll('.skill')
+rollIn.forEach(element => observer.observe(element))

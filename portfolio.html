@@ -11,8 +11,9 @@
       <section id="landing">
         <h1>Adnan Radwan</h1>
         <h2>Creator | Developer | Perfectionist</h2>
+        <a href="#about">GO</a>
       </section>
-      <section id="about">
+      <section id="about" tabindex="0">
         <h2>About Me</h2>
         <div>
           <p>
@@ -27,36 +28,74 @@
         </div>
         <h3>Skill set</h3>
         <ul aria-label="skill set list">
-          <div>
-            <div>
-              <li><img src="" alt="HTML5" /></li>
-              <li><img src="" alt="CSS3" /></li>
-            </div>
-            <div>
-              <li><img src="" alt="Sass" /></li>
-              <li><img src="" alt="Bootstrap" /></li>
-            </div>
-          </div>
-          <div>
-            <div>
-              <li><img src="" alt="JavaScript" /></li>
-              <li><img src="" alt="TypeScript" /></li>
-            </div>
-            <div>
-              <li><img src="" alt="React" /></li>
-              <li><img src="" alt="Firebase" /></li>
-            </div>
-          </div>
+          <li class="skill" aria-label="HTML">
+            <object
+              data="/icons/w3_html5-icon.svg"
+              alt="HTML5"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="CSS">
+            <object
+              data="/icons/w3_css-icon.svg"
+              alt="CSS3"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="Sass">
+            <object
+              data="/icons/sass-lang-icon.svg"
+              alt="Sass"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="Bootstrap">
+            <object
+              data="/icons/getbootstrap-icon.svg"
+              alt="Bootstrap"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="JavaScript">
+            <object
+              data="/icons/javascript.svg"
+              alt="JavaScript"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="TypeScript">
+            <object
+              data="/icons/typescript.svg"
+              alt="TypeScript"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="React">
+            <object
+              data="/icons/reactjs-icon.svg"
+              alt="React"
+              tabindex="-1"
+            ></object>
+          </li>
+          <li class="skill" aria-label="Firebase">
+            <object
+              data="/icons/firebase-icon.svg"
+              alt="Firebase"
+              id="firebase"
+              tabindex="-1"
+            ></object>
+          </li>
         </ul>
       </section>
-      <section id="creations">
-        <h2>Missions</h2>
+      <section id="creations" tabindex="0">
+        <h2>Creations</h2>
         <h4>
           Each creation started with a <span>purpose,</span><br />
           was conceived with a <span>design,</span><br />
           and came to fruition with <span>code.</span><br />
         </h4>
         <ul>
+          <!-- CalendarHub -->
           <li id="from-left">
             <div class="desktop-img-container">
               <img
@@ -79,6 +118,27 @@
                   doloribus distinctio facilis est quam vel rerum! Nesciunt
                   nostrum, repellat qui dolore accusantium fugiat.
                 </p>
+                <ul class="stack">
+                  <li>
+                    <object
+                      data="/icons/bootstrap-creations.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                  <li>
+                    <object
+                      data="/icons/reactjs-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                  <li>
+                    <object
+                      data="/icons/firebase-icon.svg"
+                      id="firebase"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                </ul>
                 <div class="creation-anchor-group">
                   <a href="https://calendarhub.netlify.app">Site</a>
                   <a href="https://github.com/onkyoh/Group-Calendar">Code</a>
@@ -86,6 +146,7 @@
               </div>
             </div>
           </li>
+          <!-- YorkvilleShop -->
           <li id="from-right">
             <div class="desktop-img-container">
               <img
@@ -108,6 +169,30 @@
                   doloribus distinctio facilis est quam vel rerum! Nesciunt
                   nostrum, repellat qui dolore accusantium fugiat.
                 </p>
+                <ul class="stack">
+                  <li>
+                    <object
+                      data="/icons/sass-lang-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                  <li>
+                    <object data="/icons/typescript.svg" tabindex="-1"></object>
+                  </li>
+                  <li>
+                    <object
+                      data="/icons/reactjs-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                  <li>
+                    <object
+                      data="/icons/firebase-icon.svg"
+                      id="firebase"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                </ul>
                 <div class="creation-anchor-group">
                   <a href="https://yorkvilleshop.com">Site</a>
                   <a href="https://github.com/onkyoh/Yorkville-Shop">Code</a>
@@ -115,6 +200,7 @@
               </div>
             </div>
           </li>
+          <!-- Wordle -->
           <li id="from-left">
             <div class="desktop-img-container">
               <img
@@ -137,6 +223,20 @@
                   facilis soluta libero id iusto sapiente cupiditate
                   perspiciatis laudantium nemo eaque dolore sunt. Voluptatem.
                 </p>
+                <ul class="stack">
+                  <li>
+                    <object
+                      data="/icons/sass-lang-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                  <li>
+                    <object
+                      data="/icons/reactjs-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                </ul>
                 <div class="creation-anchor-group">
                   <a href="https://onkyohwordleclone.netlify.app/">Site</a>
                   <a href="https://github.com/onkyoh/wordle-clone">Code</a>
@@ -144,6 +244,7 @@
               </div>
             </div>
           </li>
+          <!-- MessagesForWeather -->
           <li id="from-right">
             <div class="desktop-img-container">
               <img
@@ -166,6 +267,14 @@
                   eos deserunt numquam esse voluptatem asperiores nobis, ab
                   fugit, culpa ipsam nesciunt, quibusdam maxime?
                 </p>
+                <ul class="stack">
+                  <li>
+                    <object
+                      data="/icons/reactjs-icon.svg"
+                      tabindex="-1"
+                    ></object>
+                  </li>
+                </ul>
                 <div class="creation-anchor-group">
                   <a href="https://messagesforweather.com">Site</a>
                   <a href="https://github.com/onkyoh/Weather-Message">Code</a>
@@ -175,7 +284,7 @@
           </li>
         </ul>
       </section>
-      <section id="contact">
+      <section id="contact" tabindex="0">
         <h2>Contact Me</h2>
       </section>
     </div>
@@ -186,12 +295,15 @@
       <button aria-label="close menu" id="close" onclick="handleToggle()">
         &#10005;
       </button>
+      <!-- TODO: NAV ANIMATION: WHILE OPEN 1 BLACK PIC ONTOP AND 1 ON BOTTOM GO THROUGH SMALL ANIMATION -->
+      <div></div>
       <ul>
         <li><a href="#landing">Landing</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#creations">Creations</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div></div>
     </nav>
   </body>
 </html>

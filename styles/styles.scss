@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-
-$bg: rgb(15, 15, 15);
-$bg-light: rgb(55, 55, 55);
-$accent: rgb(225, 34, 34);
-$accent-light: rgb(255, 255, 255);
-$header-font: 'Special Elite', cursive;
-$body-font: 'Special Elite', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Michroma&display=swap');
+$bg:#234c4d;
+$bg-dark: #12262b;
+$main: #00ddb6;
+$midtone1: #76a79f;
+$body-color: white;
+$header-font: 'Michroma', sans-serif;
+$body-font: 'Dosis', sans-serif;
 
 
 @mixin flexCenter() {
@@ -23,11 +23,14 @@ $body-font: 'Special Elite', cursive;
     ::-webkit-scrollbar {
         display: none;
     }
+    ::selection {
+        background-color: #00ddb6;
+        color: #12262b;
+    }
 }
 
 body, html {
     width: 100%;
-    background-color: $bg;
 }
 
 section {
@@ -36,11 +39,10 @@ section {
     @include flexCenter();
     flex-direction: column;
     justify-content: start;
-    margin-bottom: 3em;
     padding-top: 2em;
     h2 {
         text-align: center;
-        color: $accent;
+        color: $main;
         font-size: 2em;
         font-family: $header-font;
     }
@@ -50,16 +52,19 @@ section {
     &:last-child {
         margin-bottom: none;
     }
+    &:focus {
+        outline: none;
+    }
 }
 
 p {
-    color: $accent-light;
+    color: $body-color;
     font-family: $body-font;
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 
 img {
-    color: $accent-light;
+    color: $body-color;
 }
 
 #burger {
@@ -70,12 +75,13 @@ img {
     background: none;
     line-height: 70%;
     border: none;
-    color: $accent;
+    color: $main;
     z-index: 1;
 }
 
 .wrapper {
     overflow-x: hidden;
+    background: linear-gradient(180deg, rgba(35,76,77,1), rgba(18,38,43,1), rgba(35,76,77,1), rgba(18,38,43,1), rgba(35,76,77,1));
 }
 
 nav {
@@ -83,8 +89,11 @@ nav {
     top: 0;
     width: 300px;
     height: 100vh;
-    background-color: $accent;
+    background-color: $midtone1;
+    border-right: #12262b 2px solid;
     @include flexCenter();
+    justify-content: space-around;
+    flex-direction: column;
     transition: transform 0.25s ease;
     z-index: 1;
     button {
@@ -96,6 +105,23 @@ nav {
         line-height: 70%;
         border: none;
         color: $bg;
+    }
+    @keyframes shake {
+        25% {
+            transform: rotate(45deg);
+        } 50% {
+            transform: rotate(0deg);
+        } 75% {
+            transform: rotate(-45deg);
+        } 100% {
+            transform: rotate(0deg);
+        }
+    }
+    div {
+        height: 75px;
+        width: 50px;
+        background-color: $bg;
+        animation: shake 3s steps(1) infinite;
     }
     ul {
         list-style: none;
@@ -117,24 +143,13 @@ nav {
                 font-size: 1.3em;
                 font-family: $header-font;
                 height: 2.5em;
-                line-height: 2.75em;
+                line-height: 2.5em;
                 transition: color 0.25s ease;
-                &::after {
-                    content: "\25CE";
-                    position: absolute;
-                    right: 3em;
-                    opacity: 0;
-                    color: $accent;
-                    transition: opacity 0.25s ease;
-                }
             }
             &:hover {
                 background-color: $bg;
                 a {
-                    color: $accent-light;
-                    &::after {
-                        opacity: 1;
-                    }
+                    color: white;
                 }
             }
         }
@@ -151,15 +166,57 @@ nav {
     flex-direction: column;
     gap: 2em;
     h1 {
-        font-size: 4.5em;
+        font-size: 4em;
         text-align: center;
         max-width: 90%;
-        color: $accent;
+        color: $main;
         font-family: $header-font;
     }
     h2 {
-        color: $accent-light;
-        font-size: 1.5em;
+        color: $midtone1;
+        font-size: 1.4em;
+    }
+    a {
+        position: absolute;
+        top: calc(70% + 50px);
+        text-decoration: none;
+        font-size: 2.5em;
+        color: $body-color;
+        font-family: $body-font;
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 2em;
+            border: 1px solid white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);   
+            transition: width 0.25s ease, transform 0.5s ease;
+        }
+        &:focus, &:hover {
+            outline: none;
+            &::before {
+                transform: translate(-50%, -50%) rotate(-45deg);
+                width: 2em;
+                animation: turning-before 4s linear 0.5s infinite;
+            }
+            &::after {
+                transform: translate(-50%, -50%) rotate(45deg);
+                width: 2em;
+                animation: turning-after 5s linear 0.5s infinite;
+            }
+        }
+    }
+    @keyframes turning-before {
+        to {
+            transform: translate(-50%, -50%) rotate(315deg);
+        }
+    }
+    @keyframes turning-after {
+        to {
+            transform: translate(-50%, -50%) rotate(-315deg);
+        }
     }
 }
 
@@ -167,6 +224,7 @@ nav {
     gap: 2em;
     width: 100%;
     height: fit-content;
+    padding-bottom: 3em;
     > div {
         @include flexCenter();
         flex-direction: column;
@@ -177,34 +235,69 @@ nav {
             text-align: center;
         }
         img {
-            border: 1px solid $accent-light;
+            border: 1px solid $body-color;
         }
     }
     h3 {
         font-family: $header-font;
-        color: $accent;
+        color: $main;
         font-size: 1.5em;
+        padding-bottom: 1em;
     }
+    
     ul {
         list-style: none;
         @include flexCenter();
         flex-wrap: wrap;
         gap: 2em;
-        max-width: 90%;
-        div {
+        max-width: calc(min(600px, 90%));
+        .skill {
+            color: $body-color;
+            border-radius: 15px;
+            height: 100px;
+            width: 100px;
+            background-color: #76a79f;
             @include flexCenter();
-            flex-wrap: wrap;
-            gap: 2em;
-            li {
-                color: $accent-light;
-                border-radius: 50%;
-                height: 100px;
-                width: 100px;
-                background-color: $accent;
-                @include flexCenter();
-                img {
-
-                }
+            box-shadow: 0px 0px 8px rgb(25, 25, 25);
+            position: relative;
+            transform: scale(0%) rotate(0deg);
+            transition: transform 1s;
+            &::after {
+                position: absolute;
+                font-family: $body-font;
+                content: attr(aria-label);
+                top: -25px;
+            }
+            object {
+                max-width: 64px;
+                max-height: 64px;
+            }
+        }
+        .skill.roll-in {
+            transform: scale(100%) rotate(360deg);
+            &:nth-of-type(1) {
+                transition-delay: 0.25s;
+            }
+            &:nth-of-type(2) {
+                transition-delay: 0.5s;
+            }
+            &:nth-of-type(3) {
+                transition-delay: 0.75s;
+            }
+            &:nth-of-type(4) {
+                transition-delay: 1s;
+            }
+            &:nth-of-type(5) {
+                transition-delay: 1.25s;
+            }
+            &:nth-of-type(6) {
+                transition-delay: 1.5s;
+            }
+            &:nth-of-type(7) {
+                transition-delay: 1.75s;
+            }
+            &:nth-of-type(8) {
+                transition-delay: 2s;
             }
         }
     }
@@ -219,13 +312,13 @@ nav {
     }
     h4 {
         text-align: center;
-        color: $accent-light;
-        font-size: 1em;
+        color: $body-color;
+        font-size: 1.3em;
         margin-bottom: 3em;
         font-weight: 100;
         font-family: $body-font;
         span {
-            color: $accent;
+            color: $main;
             font-weight: bold;
         }
     }
@@ -240,10 +333,10 @@ nav {
             padding: 1.5em 0;
             background-color: $bg;
             h3 {
-                font-size: 1.6em;
+                font-size: 1.3em;
                 font-family: $header-font;
                 text-align: center;
-                color: $accent;
+                color: $main;
             }
             .desktop-img-container {
                 display: none;
@@ -265,6 +358,7 @@ nav {
                     overflow: hidden;
                     box-shadow: 0px 0px 8px black;
                     @include flexCenter();
+                    border-radius: 15px;
                     img {
                         width: 100%;
                         aspect-ratio: 5/3;
@@ -277,16 +371,41 @@ nav {
                     p {
                         text-align: center;
                     }
+                    .stack {
+                        display: grid;
+                        grid-template-columns: repeat(4, auto);
+                        row-gap: 1em;
+                        width: 300px;
+                        li {
+                            margin: 0 0.5em;
+                            width: 60px;
+                            height: 50px;
+                            border-radius: 5px;
+                            box-shadow: 0px 0px 6px rgb(25, 25, 25);
+                            object {
+                                height: 30px;
+                                width: 30px;
+                            }     
+                        }
+                    }
                     .creation-anchor-group {
                         @include flexCenter();
                         justify-content: space-around;
                         width: 50%;
+                        a {
+                            text-decoration: none;
+                            color: $main;
+                            font-family: $body-font;
+                            font-size: 1.3em;
+                            text-transform: uppercase;
+                            height: 2em;
+                            line-height: 2em;
+                            text-align: center;
+                            border-radius: 5px;
+                            width: 40%;
+                        }
                     }
-                    a {
-                        text-decoration: none;
-                        color: $accent;
-                        font-family: $body-font;
-                    }
+                  
                 }
             }
         }
@@ -294,7 +413,7 @@ nav {
 }
 
 #contact {
-    height: calc(100vh - 2em);
+    height: 100vh;
     width: 100%;
     h2 {
         font-size: 2em;
@@ -305,30 +424,53 @@ button {
     cursor: pointer;
 }
 
+
+#firebase {
+    filter: grayscale(1) contrast(2.5);
+}
+
 #from-left {
     transform: translate(calc(min(-80vw, 1000px)));
     transition: transform 1s ease-in-out;
+    box-shadow: 0px 0px 8px black;
+    z-index: 1;
+   
+  
 }
 .from-left {
     transform: translate(0) !important;
-    background-color: $accent-light !important;
+    background-color: $midtone1 !important;
+    h3 {
+        color: $body-color !important;
+    }
+    a {
+        color: $body-color !important;
+    }
     p {
         color: $bg !important;
     }
+    
 }
 
 #from-right {
     transform: translate(calc(min(80vw, 1000px)));
     transition: transform 1s ease-in-out;
+    box-shadow: inset 0px 0px 8px 2px black;
+    .stack {
+        li {
+            background-color: #76a79f;
+        }
+    }
 }
 .from-right {
     transform: translate(0) !important;
 }
 
-@media screen and (min-width: 1000px) {
+
+@media screen and (min-width: 500px) {
     #creations {
         h4 {
-            font-size: 1.3em;
+            font-size: 1.8em;
         }
     }
 }
@@ -357,6 +499,14 @@ button {
             :nth-child(1), :nth-child(3) {
                 flex-direction: row-reverse;
             }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #about {
+        ul {
+            max-width: 90%;
         }
     }
 }

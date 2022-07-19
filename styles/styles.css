@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis&family=Michroma&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -12,9 +12,18 @@
   display: none;
 }
 
+* ::-moz-selection {
+  background-color: #00ddb6;
+  color: #12262b;
+}
+
+* ::selection {
+  background-color: #00ddb6;
+  color: #12262b;
+}
+
 body, html {
   width: 100%;
-  background-color: #0f0f0f;
 }
 
 section {
@@ -36,15 +45,14 @@ section {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
-  margin-bottom: 3em;
   padding-top: 2em;
 }
 
 section h2 {
   text-align: center;
-  color: #e12222;
+  color: #00ddb6;
   font-size: 2em;
-  font-family: "Special Elite", cursive;
+  font-family: "Michroma", sans-serif;
 }
 
 section:first-child {
@@ -55,10 +63,14 @@ section:last-child {
   margin-bottom: none;
 }
 
+section:focus {
+  outline: none;
+}
+
 p {
   color: white;
-  font-family: "Special Elite", cursive;
-  font-size: 1.1em;
+  font-family: "Dosis", sans-serif;
+  font-size: 1.2em;
 }
 
 img {
@@ -73,12 +85,14 @@ img {
   background: none;
   line-height: 70%;
   border: none;
-  color: #e12222;
+  color: #00ddb6;
   z-index: 1;
 }
 
 .wrapper {
   overflow-x: hidden;
+  background: -webkit-gradient(linear, left top, left bottom, from(#234c4d), color-stop(#12262b), color-stop(#234c4d), color-stop(#12262b), to(#234c4d));
+  background: linear-gradient(180deg, #234c4d, #12262b, #234c4d, #12262b, #234c4d);
 }
 
 nav {
@@ -86,7 +100,8 @@ nav {
   top: 0;
   width: 300px;
   height: 100vh;
-  background-color: #e12222;
+  background-color: #76a79f;
+  border-right: #12262b 2px solid;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,6 +111,12 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-transition: -webkit-transform 0.25s ease;
   transition: -webkit-transform 0.25s ease;
   transition: transform 0.25s ease;
@@ -111,7 +132,53 @@ nav button {
   background: none;
   line-height: 70%;
   border: none;
-  color: #0f0f0f;
+  color: #234c4d;
+}
+
+@-webkit-keyframes shake {
+  25% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes shake {
+  25% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+nav div {
+  height: 75px;
+  width: 50px;
+  background-color: #234c4d;
+  -webkit-animation: shake 3s steps(1) infinite;
+          animation: shake 3s steps(1) infinite;
 }
 
 nav ul {
@@ -156,35 +223,21 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #0f0f0f;
+  color: #234c4d;
   font-size: 1.3em;
-  font-family: "Special Elite", cursive;
+  font-family: "Michroma", sans-serif;
   height: 2.5em;
-  line-height: 2.75em;
+  line-height: 2.5em;
   -webkit-transition: color 0.25s ease;
   transition: color 0.25s ease;
 }
 
-nav ul li a::after {
-  content: "\25CE";
-  position: absolute;
-  right: 3em;
-  opacity: 0;
-  color: #e12222;
-  -webkit-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
-}
-
 nav ul li:hover {
-  background-color: #0f0f0f;
+  background-color: #234c4d;
 }
 
 nav ul li:hover a {
   color: white;
-}
-
-nav ul li:hover a::after {
-  opacity: 1;
 }
 
 .close {
@@ -212,16 +265,89 @@ nav ul li:hover a::after {
 }
 
 #landing h1 {
-  font-size: 4.5em;
+  font-size: 4em;
   text-align: center;
   max-width: 90%;
-  color: #e12222;
-  font-family: "Special Elite", cursive;
+  color: #00ddb6;
+  font-family: "Michroma", sans-serif;
 }
 
 #landing h2 {
+  color: #76a79f;
+  font-size: 1.4em;
+}
+
+#landing a {
+  position: absolute;
+  top: calc(70% + 50px);
+  text-decoration: none;
+  font-size: 2.5em;
   color: white;
-  font-size: 1.5em;
+  font-family: "Dosis", sans-serif;
+}
+
+#landing a::before, #landing a::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 2em;
+  border: 1px solid white;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: width 0.25s ease, -webkit-transform 0.5s ease;
+  transition: width 0.25s ease, -webkit-transform 0.5s ease;
+  transition: width 0.25s ease, transform 0.5s ease;
+  transition: width 0.25s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+#landing a:focus, #landing a:hover {
+  outline: none;
+}
+
+#landing a:focus::before, #landing a:hover::before {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+  width: 2em;
+  -webkit-animation: turning-before 4s linear 0.5s infinite;
+          animation: turning-before 4s linear 0.5s infinite;
+}
+
+#landing a:focus::after, #landing a:hover::after {
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+  width: 2em;
+  -webkit-animation: turning-after 5s linear 0.5s infinite;
+          animation: turning-after 5s linear 0.5s infinite;
+}
+
+@-webkit-keyframes turning-before {
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(315deg);
+            transform: translate(-50%, -50%) rotate(315deg);
+  }
+}
+
+@keyframes turning-before {
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(315deg);
+            transform: translate(-50%, -50%) rotate(315deg);
+  }
+}
+
+@-webkit-keyframes turning-after {
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(-315deg);
+            transform: translate(-50%, -50%) rotate(-315deg);
+  }
+}
+
+@keyframes turning-after {
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(-315deg);
+            transform: translate(-50%, -50%) rotate(-315deg);
+  }
 }
 
 #about {
@@ -230,6 +356,7 @@ nav ul li:hover a::after {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  padding-bottom: 3em;
 }
 
 #about > div {
@@ -260,9 +387,10 @@ nav ul li:hover a::after {
 }
 
 #about h3 {
-  font-family: "Special Elite", cursive;
-  color: #e12222;
+  font-family: "Michroma", sans-serif;
+  color: #00ddb6;
   font-size: 1.5em;
+  padding-bottom: 1em;
 }
 
 #about ul {
@@ -279,30 +407,15 @@ nav ul li:hover a::after {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 2em;
-  max-width: 90%;
+  max-width: calc(min(600px, 90%));
 }
 
-#about ul div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 2em;
-}
-
-#about ul div li {
+#about ul .skill {
   color: white;
-  border-radius: 50%;
+  border-radius: 15px;
   height: 100px;
   width: 100px;
-  background-color: #e12222;
+  background-color: #76a79f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -312,6 +425,72 @@ nav ul li:hover a::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-shadow: 0px 0px 8px #191919;
+          box-shadow: 0px 0px 8px #191919;
+  position: relative;
+  -webkit-transform: scale(0%) rotate(0deg);
+          transform: scale(0%) rotate(0deg);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+#about ul .skill::after {
+  position: absolute;
+  font-family: "Dosis", sans-serif;
+  content: attr(aria-label);
+  top: -25px;
+}
+
+#about ul .skill object {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+#about ul .skill.roll-in {
+  -webkit-transform: scale(100%) rotate(360deg);
+          transform: scale(100%) rotate(360deg);
+}
+
+#about ul .skill.roll-in:nth-of-type(1) {
+  -webkit-transition-delay: 0.25s;
+          transition-delay: 0.25s;
+}
+
+#about ul .skill.roll-in:nth-of-type(2) {
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+#about ul .skill.roll-in:nth-of-type(3) {
+  -webkit-transition-delay: 0.75s;
+          transition-delay: 0.75s;
+}
+
+#about ul .skill.roll-in:nth-of-type(4) {
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+#about ul .skill.roll-in:nth-of-type(5) {
+  -webkit-transition-delay: 1.25s;
+          transition-delay: 1.25s;
+}
+
+#about ul .skill.roll-in:nth-of-type(6) {
+  -webkit-transition-delay: 1.5s;
+          transition-delay: 1.5s;
+}
+
+#about ul .skill.roll-in:nth-of-type(7) {
+  -webkit-transition-delay: 1.75s;
+          transition-delay: 1.75s;
+}
+
+#about ul .skill.roll-in:nth-of-type(8) {
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
 }
 
 #creations {
@@ -329,14 +508,14 @@ nav ul li:hover a::after {
 #creations h4 {
   text-align: center;
   color: white;
-  font-size: 1em;
+  font-size: 1.3em;
   margin-bottom: 3em;
   font-weight: 100;
-  font-family: "Special Elite", cursive;
+  font-family: "Dosis", sans-serif;
 }
 
 #creations h4 span {
-  color: #e12222;
+  color: #00ddb6;
   font-weight: bold;
 }
 
@@ -373,14 +552,14 @@ nav ul li:hover a::after {
           flex-direction: column;
   width: calc(min(100%, 1000px));
   padding: 1.5em 0;
-  background-color: #0f0f0f;
+  background-color: #234c4d;
 }
 
 #creations ul li h3 {
-  font-size: 1.6em;
-  font-family: "Special Elite", cursive;
+  font-size: 1.3em;
+  font-family: "Michroma", sans-serif;
   text-align: center;
-  color: #e12222;
+  color: #00ddb6;
 }
 
 #creations ul li .desktop-img-container {
@@ -428,6 +607,7 @@ nav ul li:hover a::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 15px;
 }
 
 #creations ul li .header-creation-details .mobile-img-container img {
@@ -456,6 +636,29 @@ nav ul li:hover a::after {
   text-align: center;
 }
 
+#creations ul li .header-creation-details .creation-details .stack {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
+  row-gap: 1em;
+  width: 300px;
+}
+
+#creations ul li .header-creation-details .creation-details .stack li {
+  margin: 0 0.5em;
+  width: 60px;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 6px #191919;
+          box-shadow: 0px 0px 6px #191919;
+}
+
+#creations ul li .header-creation-details .creation-details .stack li object {
+  height: 30px;
+  width: 30px;
+}
+
 #creations ul li .header-creation-details .creation-details .creation-anchor-group {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -471,14 +674,21 @@ nav ul li:hover a::after {
   width: 50%;
 }
 
-#creations ul li .header-creation-details .creation-details a {
+#creations ul li .header-creation-details .creation-details .creation-anchor-group a {
   text-decoration: none;
-  color: #e12222;
-  font-family: "Special Elite", cursive;
+  color: #00ddb6;
+  font-family: "Dosis", sans-serif;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border-radius: 5px;
+  width: 40%;
 }
 
 #contact {
-  height: calc(100vh - 2em);
+  height: 100vh;
   width: 100%;
 }
 
@@ -490,6 +700,11 @@ button {
   cursor: pointer;
 }
 
+#firebase {
+  -webkit-filter: grayscale(1) contrast(2.5);
+          filter: grayscale(1) contrast(2.5);
+}
+
 #from-left {
   -webkit-transform: translate(calc(min(-80vw, 1000px)));
           transform: translate(calc(min(-80vw, 1000px)));
@@ -497,16 +712,27 @@ button {
   transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  -webkit-box-shadow: 0px 0px 8px black;
+          box-shadow: 0px 0px 8px black;
+  z-index: 1;
 }
 
 .from-left {
   -webkit-transform: translate(0) !important;
           transform: translate(0) !important;
-  background-color: white !important;
+  background-color: #76a79f !important;
+}
+
+.from-left h3 {
+  color: white !important;
+}
+
+.from-left a {
+  color: white !important;
 }
 
 .from-left p {
-  color: #0f0f0f !important;
+  color: #234c4d !important;
 }
 
 #from-right {
@@ -516,6 +742,12 @@ button {
   transition: -webkit-transform 1s ease-in-out;
   transition: transform 1s ease-in-out;
   transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  -webkit-box-shadow: inset 0px 0px 8px 2px black;
+          box-shadow: inset 0px 0px 8px 2px black;
+}
+
+#from-right .stack li {
+  background-color: #76a79f;
 }
 
 .from-right {
@@ -523,9 +755,9 @@ button {
           transform: translate(0) !important;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 500px) {
   #creations h4 {
-    font-size: 1.3em;
+    font-size: 1.8em;
   }
 }
 
@@ -567,6 +799,12 @@ button {
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
             flex-direction: row-reverse;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #about ul {
+    max-width: 90%;
   }
 }
 /*# sourceMappingURL=styles.css.map */
